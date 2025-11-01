@@ -1,35 +1,27 @@
-import React from 'react'
-import ChatInput from './ChatInput'
-import ChatMessage from './ChatMessage'
+import React, { useState } from 'react';
+import ChatMessages from './ChatMessages';
+import ChatInput from './ChatInput';
+
+
 
 
 function App() {
-  
 
-  return (
-    <>
-      <ChatInput />
+  const [chatMessages, setChatMessages] = useState([
+    {sender: 'robot',message:"Hello! How can I help you?",
+      id: crypto.randomUUID()}, // Initial message from the robot
 
-      <ChatMessage 
-        message='Hello Chatbot' 
-        sender='user' 
-      /> 
-      <ChatMessage 
-        message='Hello! How can I help you' 
-        sender='robot' 
-      /> 
-      <ChatMessage 
-        message='Can you get me todays date' 
-        sender='User' 
-      /> 
-      <ChatMessage 
-        message='Today is October 29th' 
-        sender='robot'
-      /> 
+]);
 
-    </>
-    
-  )
+const handleSend = (userMessage) => {
+  if (!userMessage.trim()) return; // Ignore empty messages
 }
 
-export default App
+const newMessages = [...ChatMessages, {sender:"user", message:userMessage}]; // Add user message to the chat
+
+setChatMessages(newMessages); // Update the chat messages state
+
+
+
+
+}
