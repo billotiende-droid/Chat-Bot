@@ -21,7 +21,21 @@ const newMessages = [...ChatMessages, {sender:"user", message:userMessage}]; // 
 
 setChatMessages(newMessages); // Update the chat messages state
 
+// Bot auto-response simulation
+setTimeout(() => {
+  let reply;
+  if (userMessage.toLowercase().includes("date")) {
+    reply = `Today's date is ${new Date().toLocaleDateString()}`;
+  } else if (userMessage.toLowerCase().includes("hello")) {
+    reply = "Hi! there";
+  } else {
+    reply = "I am not sure how to respond to that.";
+  }
+
+  setChatMessages((prev) => [...prev, {sender:"robot",message:reply}])
+
+}, 1000); // Simulate a delay for the bot's response
 
 
+};
 
-}
