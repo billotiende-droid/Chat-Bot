@@ -1,21 +1,31 @@
-import React from 'react';
+import {useState} from 'react';
 
 
-function ChatInput ()  {
+function ChatInput ({onSend}) {
 
-return(
-    <div>
-        <input placeholder='send a message to chat bot' 
-        size="30" />
-        
-        <button>Send</button>
+    const [input , setInput] = useState ('');
 
-    </div>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(input.trim()) {
+            onSend(input);
+            setInput(''); // Clear the input field after sending
+        }
+    };
 
-)
+    return (
+        <form className='chat-input' onSubmit = {handleSubmit} >
+            <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type your message here..."
+            />
+            <button type="submit">Send</button>
+        </form>
 
+    );
 
 }
 
-
-export default ChatInput;
+export default ChatInput; // Export the ChatInput component to be used in other parts of the app
