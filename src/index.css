@@ -1,1 +1,56 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
+body {
+    background-color: rgb(248, 244, 244)
+  }.chat-container {
+  width: 400px;
+  margin: 30px auto;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  padding: 8px 12px;
+  margin: 8px 0;
+  border-radius: 16px;
+  max-width: 75%;
+}
+
+.message.user {
+  background-color: #daf8cb;
+  align-self: flex-end;
+}
+
+.message.bot {
+  background-color: #f1f0f0;
+  align-self: flex-start;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.chat-input button {
+  background: #0078ff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+}
